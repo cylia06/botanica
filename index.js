@@ -100,10 +100,10 @@ app.use('/', (_, res) => {
   `);
 });
 
-app.use('/graphql', (_, res) => {
+/*app.use('/graphql', (_, res) => {
   res.header('Access-Control-Allow-Origin', '*');
   next();
-});
+});*/
 
 app.listen(4000);
 console.log('Running index at http://localhost:4000/');
