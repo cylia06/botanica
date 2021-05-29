@@ -92,11 +92,17 @@ app.use('/logout', (req, res) => {
 });
 
 app.use('/', (_, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
   res.send(`
     <a href="/graphql">GraphiQL</a>
     <a href="/login">Login</a>
     <a href="/logout">Logout</a>
   `);
+});
+
+app.use('/graphql', (_, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
 });
 
 app.listen(4000);
