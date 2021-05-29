@@ -1,5 +1,6 @@
 import session from 'express-session';
 import express from 'express';
+import cors from 'cors';
 import expressGraphQL from 'express-graphql';
 import graphqlM from 'graphql';
 import supabaseJS from '@supabase/supabase-js';
@@ -31,6 +32,8 @@ const buildContext = (req) => {
 };
 
 var app = express();
+//var cors = require('cors');
+app.use(cors());
 
 app.use(
   session({
@@ -43,6 +46,7 @@ app.use(
 
 app.use(
   '/graphql',
+  
   graphqlHTTP((req) => ({
     schema,
     context: buildContext(req),
@@ -100,10 +104,11 @@ app.use('/', (_, res) => {
   `);
 });
 
-/*app.use('/graphql', (_, res) => {
+
+app.use('/graphql', (_, res) => {
   res.header('Access-Control-Allow-Origin', '*');
   next();
-});*/
+});
 
 app.listen(4000);
 console.log('Running index at http://localhost:4000/');
