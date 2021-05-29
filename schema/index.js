@@ -156,9 +156,7 @@ const addTree = mutationWithClientMutationId({
     },
   },
   mutateAndGetPayload: async (input, { supabase }) => {
-    console.log(
-      'Mutation.addTree : ' + JSON.stringify(input, null, 2)
-    );
+   
     const { name, color, max_height, plant_url, is_indoor, lifespan, category } = input;
     const {data:dataPot} = await supabase.from('tree').select('id');
 
